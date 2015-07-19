@@ -5,6 +5,7 @@
 #include "Environment.h"
 #include "Network/Network.h"
 #include "Threads/Threads.h"
+#include "Interface/Interface.h"
 
 typedef NWUDPSocket ServerSocket;
 

@@ -15,8 +15,9 @@ void TBServerRxFunc(TBServer_Type *pServer_Arg)
 		char *pMsg = malloc(THQ_MESSAGE_SIZE);
 		assert(pMsg);
 		this->ServerRead(this->SrvSocket, THQ_MESSAGE_SIZE, pMsg);
-		printf("\n Other: %s \n", pMsg);
-		THQWrite(&this->RxQueue, pMsg);
+		INTWrite(OtherNick, pMsg);
+		free (pMsg);
+//		THQWrite(&this->RxQueue, pMsg);
 	}
 }
 #else

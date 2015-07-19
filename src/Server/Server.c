@@ -4,6 +4,7 @@
 
 #define BODYDEF
 
+char *OtherNick = "Other";
 
 #include "Server/TBServerCreate.c"
 #include "Server/TBServerRxFunc.c"

@@ -12,7 +12,6 @@ void *TBClientTxFunc(void *pClient_Arg)
 		THQRead(&pThis->TxQueue, &pMsg);
 		assert(pMsg);
 		pThis->ClientWrite(pThis->CliSocket, THQ_MESSAGE_SIZE, pMsg);
-		printf("\n %s: %s\n", pThis->pNick, pMsg);
 		free(pMsg);
 	}
 	ThreadExit(NULL);

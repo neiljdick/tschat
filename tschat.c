@@ -1,14 +1,12 @@
-/* Trivial Secure chat! */
+/* Trivial insecure chat! */
 
-/* This program makes use of openssl to encrypt/decrypt messages
-   
- */
 
 #include "Environment.h"
 #include <unistd.h>
 #include "Client/Client.h"
 #include "Server/Server.h"
 #include "Network/Network.h"
+#include "Interface/Interface.h"
 #include <string.h>
 
 void HandleCmdLine(int argc, char **argv);
@@ -20,16 +18,26 @@ int main(int argc, char **argv)
 	TBClient_Type Client;
 	TBServer_Type Server;
 
+
 	HandleCmdLine(argc, argv);
 
 	TBClientCreate(&Client, pNickName);
 	TBServerCreate(&Server);
-	while(1)
+
+	INTInit(pNickName);
+
+	while(TRUE)
 	{
-		char *pMsg = malloc(THQ_MESSAGE_SIZE);
-		fgets(pMsg, THQ_MESSAGE_SIZE, stdin);
+		char *pMsg = malloc(INT_BUF_SIZE+1); /* This gets free'd by the queue */
+		if (INTRead(pMsg) == -1)
+		{
+			break;
+		}
 		TBClientAddMessage(&Client, pMsg);
 	}
+	TBClientDestroy(&Client);
+	TBServerDestroy(&Server);
+	INTDestroy();
 
 }
 

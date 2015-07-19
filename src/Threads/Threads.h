@@ -14,10 +14,12 @@ typedef pthread_t THThread_Type;
 typedef sem_t THSemaphore_Type;
 
 #include "POSIX/MutexInit.c"
+#include "POSIX/MutexDestroy.c"
 #include "POSIX/MutexLock.c"
 #include "POSIX/MutexUnlock.c"
 #include "POSIX/ThreadCreate.c"
 #include "POSIX/SemaphoreInit.c"
+#include "POSIX/SemaphoreDestroy.c"
 #include "POSIX/SemaphoreWait.c"
 #include "POSIX/SemaphorePost.c"
 #include "POSIX/ThreadDestroy.c"

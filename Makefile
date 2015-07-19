@@ -2,8 +2,8 @@ CC = gcc
 
 INCLUDE = {./,./src}
 CFLAGS = -g -c -Wall -I$(INCLUDE) -std=c99 -Werror 
-OBJLIBS = Network.o Threads.o Client.o Server.o
-LDFLAGS = -lpthread
+OBJLIBS = Network.o Threads.o Client.o Server.o Interface.o
+LDFLAGS = -lpthread -lncurses
 EXE = tschat
 SRC_DIR = ./src
 # I have no idea how makefiles work...
@@ -27,6 +27,9 @@ Client.o:
 
 Server.o:
 	$(CC) $(CFLAGS) $(SRC_DIR)/Server/Server.c
+
+Interface.o:
+	$(CC) $(CFLAGS) $(SRC_DIR)/Interface/Interface.c
 
 clean:
 	-rm *.o 

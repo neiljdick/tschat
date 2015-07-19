@@ -8,6 +8,9 @@ void THQDestroy(THQueue *pQueue_Arg)
 		free(pQueue_Arg->ppBuf[i]);
 	}
 	free(pQueue_Arg->ppBuf);
+	MutexDestroy(&pQueue_Arg->Lock);
+	SemaphoreDestroy(&pQueue_Arg->Empty);
+	SemaphoreDestroy(&pQueue_Arg->Full);
 }
 #else 
 ;
