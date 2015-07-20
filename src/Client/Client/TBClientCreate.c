@@ -1,9 +1,14 @@
 /* Creates a client object */
 
-int TBClientCreate(TBClient_Type *pClient_Arg, char *pNick_Arg)
+int TBClientCreate(TBClient_Type *pClient_Arg, char *pNick_Arg, char *pDest_Arg)
 #ifdef BODYDEF
 {
-	pClient_Arg->CliSocket = NWUDPCreateSocket(SERVER_PORT_NUM, SERVER_DESTINATION_ADDR);
+	assert(pNick_Arg);
+	assert(pDest_Arg);
+	assert(pClient_Arg);
+
+	pClient_Arg->pDestinationAddr = pDest_Arg;
+	pClient_Arg->CliSocket = NWUDPCreateSocket(SERVER_PORT_NUM, pDest_Arg);
 	assert(pClient_Arg->CliSocket);
 	pClient_Arg->pNick = pNick_Arg;
 	pClient_Arg->ClientRead = NWUDPReadSocket;

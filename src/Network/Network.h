@@ -5,9 +5,6 @@
 #include "Environment.h"
 
 #define SERVER_PORT_NUM 6123
-//#define SERVER_DESTINATION_ADDR "localhost"
-char *SERVER_DESTINATION_ADDR;
-
 
 #ifdef POSIX_ENV
 #define _SVID_SOURCE

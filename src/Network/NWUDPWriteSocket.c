@@ -8,7 +8,12 @@ int NWUDPWriteSocket(NWUDPSocket* Socket_Arg, int NumBytes_Arg, char * Data_Arg)
 	assert(Data_Arg);
 	assert(Socket_Arg);
 
-	Err = sendto(Socket_Arg->UDPSocket, Data_Arg, NumBytes_Arg, 0, (struct sockaddr *)&Socket_Arg->Si_me, Other);
+	Err = sendto(Socket_Arg->UDPSocket,
+				 Data_Arg,
+				 NumBytes_Arg,
+				 0,
+				 (struct sockaddr *)&Socket_Arg->Si_me,
+				 Other);
 	if (Err == -1)
 	{
 		NWUDPSocketPerror("Write Socket");
