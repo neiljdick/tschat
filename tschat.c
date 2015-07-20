@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	TBServerDestroy(&Server);
 	INTDestroy();
 
-	return;
+	return 0;
 }
 
 
