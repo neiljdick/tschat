@@ -7,7 +7,6 @@
 #define SERVER_PORT_NUM 6123
 
 #ifdef POSIX_ENV
-#define _SVID_SOURCE
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <netinet/in.h>

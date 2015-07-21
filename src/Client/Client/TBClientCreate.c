@@ -14,7 +14,7 @@ int TBClientCreate(TBClient_Type *pClient_Arg, char *pNick_Arg, char *pDest_Arg)
 	pClient_Arg->ClientRead = NWUDPReadSocket;
 	pClient_Arg->ClientWrite = NWUDPWriteSocket;
 
-	/* Create syncronized queues for RX and TX */
+	/* Create syncronized queues for TX */
 	THQCreate(&pClient_Arg->TxQueue);
 
 	pClient_Arg->Running = TRUE;

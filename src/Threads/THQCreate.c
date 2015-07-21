@@ -6,7 +6,7 @@ int THQCreate(THQueue *pQueue_Arg)
 	assert(pQueue_Arg);
 	/* Allocate the buffer  */
 	pQueue_Arg->ppBuf = malloc(sizeof(char *)*THQUEUE_SIZE);
-	assert(pQueue_Arg);
+	assert(pQueue_Arg->ppBuf);
 	MutexInit(&pQueue_Arg->Lock);
 	SemaphoreInit(&pQueue_Arg->Empty, THQUEUE_SIZE);
 	SemaphoreInit(&pQueue_Arg->Full, 0);

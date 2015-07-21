@@ -3,15 +3,15 @@ CC = gcc
 INCLUDE = {./,./src}
 CFLAGS = -g -c -Wall -I$(INCLUDE) -std=c99 -Werror 
 OBJLIBS = Network.o Threads.o Client.o Server.o Interface.o
-LDFLAGS = -lpthread -lncurses
+LDFLAGS = -pthread -lncurses
 EXE = tschat
 SRC_DIR = ./src
 # I have no idea how makefiles work...
 
-all: clean $(EXE) $(SERVER)
+all: clean $(EXE) 
 
 $(EXE): tschat.o $(OBJLIBS)
-	$(CC) $(LDFLAGS) -pg -o $(EXE) tschat.o $(OBJLIBS)
+	$(CC) -o $(EXE) tschat.o $(OBJLIBS) $(LDFLAGS) 
 
 tschat.o:
 	$(CC) $(CFLAGS) tschat.c 

@@ -14,7 +14,7 @@ NWUDPSocket * NWUDPCreateSocket(unsigned int Port_Arg, char *Dest_Addr)
 	if(Socket->UDPSocket < 0)
 	{
 		NWUDPSocketPerror("Socket assign \n");
-		goto ErrInit;
+		EXCEPTION ErrInit;
 	}
 	Socket->Si_me.sin_family = AF_INET;
 	Socket->Si_me.sin_port = htons(Port_Arg);
