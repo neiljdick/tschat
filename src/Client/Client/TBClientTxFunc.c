@@ -8,10 +8,10 @@ void *TBClientTxFunc(void *pClient_Arg)
 	assert(pThis);
 	while(pThis->Running)
 	{
-		char *pMsg = NULL;
-		THQRead(&pThis->TxQueue, &pMsg);
+		TBMessage_Type *pMsg = NULL;
+		THQRead(&pThis->TxQueue, (char **)&pMsg);
 		assert(pMsg);
-		pThis->ClientWrite(pThis->CliSocket, THQ_MESSAGE_SIZE, pMsg);
+		pThis->ClientWrite(pThis->CliSocket, sizeof(TBMessage_Type), (char *)pMsg);
 		free(pMsg);
 	}
 	ThreadExit(NULL);

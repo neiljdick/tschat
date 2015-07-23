@@ -19,7 +19,7 @@ int TBClientCreate(TBClient_Type *pClient_Arg, char *pNick_Arg, char *pDest_Arg)
 
 	pClient_Arg->Running = TRUE;
 	/* Create the TX Thread */
-	ThreadCreate(&pClient_Arg->TxThread,(void *)pClient_Arg,TBClientTxFunc);
+	ThreadCreate(&pClient_Arg->TxThread, (void *)pClient_Arg, TBClientTxFunc);
 
 	return TRUE;
 }

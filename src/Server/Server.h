@@ -19,6 +19,12 @@ typedef struct
 	BOOL Running;
 } TBServer_Type;
 
+typedef struct
+{
+	char Nick[32];
+	char Msg[256];
+} TBMessage_Type;
+
 #include "Server/TBServerCreate.c"
 #include "Server/TBServerRxFunc.c"
 #include "Server/TBServerDestroy.c"

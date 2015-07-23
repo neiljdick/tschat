@@ -32,16 +32,17 @@ int main(int argc, char **argv)
 
 	while(TRUE)
 	{
-		char *pMsg = malloc(INT_BUF_SIZE+1); /* This gets free'd by the queue */
+		TBMessage_Type *pNwkMsg = malloc(sizeof(TBMessage_Type)); /* This gets free'd by the queue */
+		memset(pNwkMsg, 0, sizeof(TBMessage_Type));
 		/* Read a line of user input and pass it through the queue
 		   to the socket thread
 		 */
-		if (INTRead(pMsg) == -1)
+		if (INTRead(pNwkMsg->Msg) == -1)
 		{
 			/* user typed /quit */
 			break;
 		}
-		TBClientAddMessage(&Client, pMsg);
+		TBClientAddMessage(&Client, pNwkMsg);
 	}
 	TBClientDestroy(&Client);
 	TBServerDestroy(&Server);

@@ -12,12 +12,11 @@ void TBServerRxFunc(TBServer_Type *pServer_Arg)
 	printf("Socket Online \n");
 	while(1)
 	{
-		char *pMsg = malloc(THQ_MESSAGE_SIZE);
+		TBMessage_Type *pMsg = malloc(sizeof(TBMessage_Type));
 		assert(pMsg);
-		this->ServerRead(this->SrvSocket, THQ_MESSAGE_SIZE, pMsg);
-		INTWrite(OtherNick, pMsg);
+		this->ServerRead(this->SrvSocket, sizeof(TBMessage_Type), (char *)pMsg);
+		INTWrite(pMsg->Nick, pMsg->Msg);
 		free (pMsg);
-//		THQWrite(&this->RxQueue, pMsg);
 	}
 }
 #else

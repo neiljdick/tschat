@@ -4,6 +4,7 @@
 
 #include "Network/Network.h"
 #include "Threads/Threads.h"
+#include "Server/Server.h"
 
 typedef NWUDPSocket ClientSocket;
 

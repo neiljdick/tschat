@@ -29,7 +29,7 @@ typedef sem_t THSemaphore_Type;
 #endif
 
 #define THQUEUE_SIZE 10
-#define THQ_MESSAGE_SIZE 256
+
 typedef struct
 {
 	THSemaphore_Type Empty;
