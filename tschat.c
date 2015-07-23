@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		/* Read a line of user input and pass it through the queue
 		   to the socket thread
 		 */
-		if (INTRead(pNwkMsg->Msg) == -1)
+		if (INTRead(pNwkMsg->Msg, sizeof(pNwkMsg->Msg)) == -1)
 		{
 			/* user typed /quit */
 			break;

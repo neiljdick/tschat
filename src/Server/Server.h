@@ -6,6 +6,9 @@
 #include "Threads/Threads.h"
 #include "Interface/Interface.h"
 
+#define TBSERVER_NICK_LEN 32
+#define TBSERVER_BUF_SIZE 256
+
 typedef NWUDPSocket ServerSocket;
 
 typedef struct
@@ -21,8 +24,8 @@ typedef struct
 
 typedef struct
 {
-	char Nick[32];
-	char Msg[256];
+	char Nick[TBSERVER_NICK_LEN];
+	char Msg[TBSERVER_BUF_SIZE];
 } TBMessage_Type;
 
 #include "Server/TBServerCreate.c"

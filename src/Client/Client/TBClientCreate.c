@@ -10,7 +10,7 @@ int TBClientCreate(TBClient_Type *pClient_Arg, char *pNick_Arg, char *pDest_Arg)
 	pClient_Arg->pDestinationAddr = pDest_Arg;
 	pClient_Arg->CliSocket = NWUDPCreateSocket(SERVER_PORT_NUM, pDest_Arg);
 	assert(pClient_Arg->CliSocket);
-	pClient_Arg->pNick = pNick_Arg;
+	strncpy(pClient_Arg->Nick, pNick_Arg, sizeof(pClient_Arg->Nick));
 	pClient_Arg->ClientRead = NWUDPReadSocket;
 	pClient_Arg->ClientWrite = NWUDPWriteSocket;
 

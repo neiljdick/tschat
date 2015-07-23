@@ -5,7 +5,7 @@ void TBClientAddMessage(TBClient_Type *pClient_Arg, TBMessage_Type *pMessage_Arg
 {
 	assert(pClient_Arg);
 	assert(pMessage_Arg);
-	strncpy(pMessage_Arg->Nick, pClient_Arg->pNick, sizeof(pMessage_Arg->Nick));
+	strncpy(pMessage_Arg->Nick, pClient_Arg->Nick, sizeof(pMessage_Arg->Nick));
 	THQWrite(&pClient_Arg->TxQueue, (char *)pMessage_Arg);
 	return;
 }

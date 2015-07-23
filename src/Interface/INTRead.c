@@ -1,4 +1,4 @@
-int INTRead(char *pBuf_Arg)
+int INTRead(char *pBuf_Arg, int Size_Arg)
 #ifdef BODY_DEF
 {
 	int Ret = 0;
@@ -15,7 +15,7 @@ int INTRead(char *pBuf_Arg)
 	MutexUnlock(&m_Lock);
 
 
-	getnstr(pBuf_Arg, INT_BUF_SIZE);
+	getnstr(pBuf_Arg, Size_Arg);
 	if (!strcmp(pBuf_Arg, "/quit"))
 	{
 		Ret = -1;
