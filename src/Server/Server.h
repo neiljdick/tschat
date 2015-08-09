@@ -6,8 +6,9 @@
 #include "Threads/Threads.h"
 #include "Interface/Interface.h"
 
-#define TBSERVER_NICK_LEN 32
-#define TBSERVER_BUF_SIZE 256
+#define MAX_BODY_SIZE 512
+#define MSG_PACKET_LEN(Packet) \
+	(strlen(Packet.Body) + sizeof(TBMessageHeader_Type))
 
 typedef NWUDPSocket ServerSocket;
 
@@ -22,10 +23,21 @@ typedef struct
 	BOOL Running;
 } TBServer_Type;
 
+typedef enum
+{
+	MSG_TYPE_NICK,
+	MSG_TYPE_CHAT
+} MSG_TYPE_ENUM;
+
 typedef struct
 {
-	char Nick[TBSERVER_NICK_LEN];
-	char Msg[TBSERVER_BUF_SIZE];
+	uint32_t Type;
+	uint32_t Length;
+} TBMessageHeader_Type;
+typedef struct
+{
+	TBMessageHeader_Type Header;
+	char Body[MAX_BODY_SIZE];
 } TBMessage_Type;
 
 #include "Server/TBServerCreate.c"

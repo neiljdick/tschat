@@ -17,7 +17,7 @@ typedef struct
 	THQueue TxQueue; 	
 	THThread_Type TxThread;
 	BOOL Running;
-	char Nick[TBSERVER_NICK_LEN];
+	char Nick[32];
 } TBClient_Type;
 
 #include "Client/TBClientCreate.c"
