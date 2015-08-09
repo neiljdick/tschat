@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
 	while(TRUE)
 	{
-		char *pNwkMsg = malloc(sizeof(char *)); /* This gets free'd by the queue */
+		char *pNwkMsg = malloc(MAX_BODY_SIZE); /* This gets free'd by the queue */
 		assert(pNwkMsg);
 		/* Read a line of user input and pass it through the queue
 		   to the socket thread
